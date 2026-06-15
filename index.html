@@ -29,6 +29,17 @@ body{padding-bottom:92px!important}
 .phone.main-content{bottom:calc(92px + env(safe-area-inset-bottom))!important;}
 .app-container{background:#020b10!important;}
 </style>
+
+<style id="CEN-BLACK-GAP-FIX-V5C">
+/* v5c: 기존 하단 흐름/푸터 예약공간 제거 + 통합 네비게이터 기준으로 재정렬 */
+:root{--footer-h:92px!important;--flow-h:0px!important;--cen-footer-h:82px!important;}
+.flow-dock,.fixedFooter:not(.unifiedDock),.cen-bottom-solid-bg,.jesus-flow-strip,.era-flow-strip{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;overflow:hidden!important;pointer-events:none!important;}
+.viewport{bottom:calc(92px + env(safe-area-inset-bottom))!important;}
+.unifiedDock{height:auto!important;min-height:0!important;}
+.unifiedDock .action{min-height:34px!important;}
+.unifiedDock .coreFlow{margin-bottom:4px!important;}
+.unifiedDock .action[data-link="overview"]{letter-spacing:-.07em!important;}
+</style>
 </head>
 <body>
   <div id="app">
@@ -74,7 +85,7 @@ body{padding-bottom:92px!important}
   <nav class="unifiedNav" aria-label="하단 메뉴">
     <button class="action" type="button" data-link="timeline" data-footer="timeline">성경연표</button>
     <button class="action" type="button" data-link="connect" data-footer="connect">주제탐험</button>
-    <button class="action" type="button" data-link="overview" data-footer="overview">한눈에 성경</button>
+    <button class="action" type="button" data-link="overview" data-footer="overview">한눈에성경</button>
     <button class="action main" type="button" data-link="hub" data-footer="hub">허브</button>
   </nav>
 </footer>
