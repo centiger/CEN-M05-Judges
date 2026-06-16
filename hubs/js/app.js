@@ -67,7 +67,7 @@ const HUBS = [
     integrated:['미가의 우상 → 단 지파 이주 → 레위인 첩 사건 → 베냐민 전쟁','왕이 없던 시대 → 사무엘 등장 → 사울 → 다윗','참 왕에 대한 갈망이 통일왕국으로 이어진다'],
     refs:['사사기 17장','사사기 18장','사사기 19장','사사기 20장','사사기 21장','사무엘상 8장'],
     message:'사사기의 마지막은 충격적이다. 미가의 우상, 단 지파 이주, 레위인 첩 사건, 베냐민 전쟁은 공동체 붕괴를 보여준다. 이 혼란은 사무엘의 등장과 사울·다윗 왕국으로 이어지며 참된 왕의 필요성을 드러낸다.',
-    prev:'samson',next:null,nextEra:{label:'통일왕국 Matrix', url:'#', desc:'왕이 없던 시대의 혼란은 사무엘의 등장과 사울·다윗 왕국으로 이어집니다.'}
+    prev:'samson',next:null,nextEra:{label:'통일왕국 Matrix', url:'https://centiger.github.io/CEN-M06-United/', desc:'왕이 없던 시대의 혼란은 사무엘의 등장과 사울·다윗 왕국으로 이어집니다.'}
   }
 ];
 const byId = Object.fromEntries(HUBS.map(h=>[h.id,h]));
