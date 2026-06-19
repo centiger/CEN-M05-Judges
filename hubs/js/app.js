@@ -134,9 +134,87 @@ const byId = Object.fromEntries(HUBS.map(h=>[h.id,h]));
 const params = new URLSearchParams(location.search);
 let current = params.get('hub') || 'opening';
 if(!byId[current]) current='opening';
+
+function renderExplore(items){
+  function escapeLocal(s){
+    return String(s||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function hasEmoji(s){
+    return /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(String(s||''));
+  }
+  function iconForStep(s){
+    const t=String(s||'');
+    if(/죄|타락/.test(t)) return '🍎';
+    if(/억압|압제|고통/.test(t)) return '⛓️';
+    if(/부르짖음|기도/.test(t)) return '🙏';
+    if(/사사|지도자/.test(t)) return '⚖️';
+    if(/구원|해방/.test(t)) return '🕊️';
+    if(/기드온/.test(t)) return '🛡️';
+    if(/드보라/.test(t)) return '🌴';
+    if(/삼손/.test(t)) return '💪';
+    if(/사무엘/.test(t)) return '👴';
+    if(/왕|왕국|다윗/.test(t)) return '👑';
+    if(/언약|말씀/.test(t)) return '📜';
+    if(/출애굽|광야/.test(t)) return '🌊';
+    if(/정복|가나안|땅/.test(t)) return '🏞️';
+    if(/예수|그리스도|십자가|메시아/.test(t)) return '✝️';
+    if(/교회/.test(t)) return '⛪';
+    if(/새창조|새 예루살렘/.test(t)) return '👑';
+    return '🔹';
+  }
+  function verticalFlowHtml(text){
+    const raw=String(text||'').replace(/\s*\|\s*/g,' ').trim();
+    const parts=raw.split(/\s*→\s*/).map(v=>v.trim()).filter(Boolean);
+    if(parts.length<2) return escapeLocal(raw).replace(/\n/g,'<br>');
+    return parts.map((step,i)=>{
+      const labeled=hasEmoji(step) ? step : `${iconForStep(step)} ${step}`;
+      const line=`<span class="flowLine">${escapeLocal(labeled)}</span>`;
+      return i===parts.length-1 ? line : line + `<span class="flowArrow">↓</span>`;
+    }).join('');
+  }
+  function normalHtml(text){
+    return escapeLocal(String(text||'').replace(/\s*\|\s*/g,'\n')).replace(/\n/g,'<br>');
+  }
+  return (items||[]).map(x=>{
+    let title='', text='';
+    if(typeof x==='string'){
+      const s=String(x||'');
+      if(s.includes('|')){
+        const a=s.split('|');
+        title=a.shift().trim();
+        text=a.join('|').trim();
+      }else{
+        text=s.trim();
+      }
+    }else{
+      title=String(x.title||x.label||'').trim();
+      text=String(x.text||x.content||x.body||'').trim();
+    }
+    if(title.includes('|')){
+      const a=title.split('|');
+      title=a.shift().trim();
+      text=a.join('|').trim() + (text ? '\n' + text : '');
+    }
+    const isFlow=/연결\s*흐름|성경\s*전체\s*흐름/.test(title) || text.includes('→');
+    const body=isFlow ? verticalFlowHtml(text) : normalHtml(text);
+    return `<div class="exploreCard">${title?`<b>${escapeLocal(title)}</b>`:''}<p>${body}</p></div>`;
+  }).join('');
+}
+
 function fillList(id, items){
-  const el=document.getElementById(id); el.innerHTML='';
-  (items||['다음 단계에서 세부 내용을 연결합니다.']).forEach(t=>{const li=document.createElement('li');li.textContent=t;el.appendChild(li);});
+  const el=document.getElementById(id);
+  if(!el) return;
+  if(id==='connections' || id==='integrated' || id==='integration'){
+    el.classList.add('exploreGrid');
+    el.innerHTML=renderExplore(items||['다음 단계에서 세부 내용을 연결합니다.']);
+    return;
+  }
+  el.innerHTML='';
+  (items||['다음 단계에서 세부 내용을 연결합니다.']).forEach(t=>{
+    const li=document.createElement('li');
+    li.textContent=t;
+    el.appendChild(li);
+  });
 }
 function render(id){
   const h=byId[id]||byId.opening; current=h.id;
