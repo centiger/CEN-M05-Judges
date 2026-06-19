@@ -1,2 +1,39 @@
 :root{--gold:#f2c76f;--gold2:#ffe4a0;--line:rgba(242,199,111,.34);--bg:#071017}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:linear-gradient(#101317,#02060a);color:#f7efe0;font-family:system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}body{padding-bottom:env(safe-area-inset-bottom)}.wrap{max-width:760px;margin:0 auto;padding:18px 14px 96px}.top{display:flex;justify-content:space-between;gap:10px;align-items:center}.top button,.bottom button{border:1px solid var(--line);background:rgba(0,0,0,.35);color:#f7efe0;padding:10px 14px;border-radius:12px;font-weight:900}.head{position:relative;text-align:center;margin:20px 0 14px;padding:18px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(126,75,22,.28),rgba(255,255,255,.05));box-shadow:0 10px 30px rgba(0,0,0,.22)}.hubSymbol{width:58px;height:58px;margin:0 auto 10px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(180deg,rgba(242,199,111,.23),rgba(255,255,255,.055));border:1px solid rgba(242,199,111,.42);box-shadow:0 10px 26px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.12)}h1{color:var(--gold);font-size:30px;margin:0 0 4px;letter-spacing:-.05em}.sub{color:#fff;font-size:20px;font-weight:850;margin-bottom:12px;letter-spacing:-.04em}.theme{color:#f8e5b8;line-height:1.6;font-size:15px;font-weight:400}.mapCard{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#08131e;margin:14px 0;box-shadow:0 8px 24px rgba(0,0,0,.18)}.mapCard img{width:100%;display:block;min-height:180px;object-fit:cover;background:#0b1720;border-bottom:1px solid rgba(242,199,111,.18)}.mapText{padding:14px 15px 16px;color:#f2dfb4;font-weight:400;line-height:1.62;font-size:15px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.08))}.mapText::before{content:'지도설명문';display:inline-block;margin-right:8px;padding:2px 7px;border-radius:999px;background:rgba(242,199,111,.15);border:1px solid rgba(242,199,111,.28);font-size:12px;color:#ffe3a4;font-weight:650}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.18)}.card h2{font-size:18px;color:var(--gold);margin:0 0 10px}.verse{font-size:18px;line-height:1.58;border-left:4px solid var(--gold);padding-left:14px;color:#fff5d8}ul{margin:0;padding-left:18px;line-height:1.75}.message{grid-column:1/-1}.message p{margin:0;line-height:1.7;color:#fff3d2}.nextEraCard{margin:14px 0 4px;border:1px solid rgba(242,199,111,.45);border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(169,109,33,.28),rgba(255,255,255,.06));box-shadow:0 10px 28px rgba(0,0,0,.22);display:flex;gap:12px;align-items:center;justify-content:space-between}.nextEraText{line-height:1.45;color:#f8e5b8}.nextEraText strong{display:block;color:var(--gold);font-size:18px;margin-bottom:4px}.nextEraText span{font-size:14px}.nextEraCard button{border:1px solid rgba(242,199,111,.5);background:linear-gradient(180deg,#b97925,#704216);color:#fff7df;border-radius:14px;padding:12px 14px;font-weight:950;white-space:nowrap}.bottom button.next-era{background:linear-gradient(180deg,#b97925,#704216);color:#fff7df}
 .bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(2,8,13,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px calc(10px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left));display:flex;gap:8px;justify-content:center;z-index:20}.bottom button:nth-child(2){background:linear-gradient(180deg,#a96d21,#6b3e13)}.listModal{position:fixed;inset:0;background:rgba(0,0,0,.58);display:none;align-items:flex-end;justify-content:center;z-index:50;padding:0 10px calc(86px + env(safe-area-inset-bottom));}.listModal.show{display:flex}.listPanel{width:100%;max-width:760px;background:linear-gradient(180deg,rgba(21,25,30,.98),rgba(5,9,13,.98));border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 -22px 50px rgba(0,0,0,.5);position:relative}.listPanel h2{margin:0 44px 14px 0;color:var(--gold);font-size:22px}.listClose{position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font-size:22px}.hubList{display:grid;gap:8px}.hubItem{width:100%;text-align:left;border:1px solid rgba(242,199,111,.28);background:rgba(255,255,255,.06);color:#f7efe0;border-radius:14px;padding:12px 14px;font-weight:900;display:flex;align-items:center;gap:11px}.hubItemIcon{width:38px;height:38px;flex:0 0 38px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(242,199,111,.12);border:1px solid rgba(242,199,111,.27)}.hubItemText{display:block;line-height:1.22}.hubItemText small{display:block;color:#f4d28b;font-weight:700;margin-top:3px}@media(max-width:720px){.nextEraCard{flex-direction:column;align-items:stretch;text-align:center}.nextEraCard button{width:100%;font-size:16px}.grid{grid-template-columns:1fr}h1{font-size:26px}.sub{font-size:18px}.wrap{padding-left:12px;padding-right:12px}}@media(max-width:430px){.hubSymbol{width:52px;height:52px;font-size:31px;border-radius:18px}.hubItemIcon{width:34px;height:34px;flex-basis:34px;font-size:20px}.verse{font-size:17px}}
+
+
+/* v3.4 M05 standard: 연결탐험/통합탐험 카드형 + 세로형 흐름 */
+.exploreGrid{display:grid!important;gap:10px!important;padding-left:0!important;margin:0!important}
+.exploreCard{
+  list-style:none!important;
+  border:1px solid rgba(247,216,137,.24)!important;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.06)!important;
+  padding:12px 13px!important;
+  margin:0!important;
+}
+.exploreCard b{
+  display:block!important;
+  color:#ffe8a8!important;
+  font-size:16px!important;
+  margin-bottom:10px!important;
+  line-height:1.35!important;
+  letter-spacing:-.04em!important;
+}
+.exploreCard p{
+  margin:0!important;
+  color:rgba(255,255,255,.92)!important;
+  font-size:15px!important;
+  line-height:1.75!important;
+  font-weight:780!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+}
+.exploreCard .flowLine{display:block!important}
+.exploreCard .flowArrow{
+  display:block!important;
+  color:#f7d889!important;
+  font-weight:950!important;
+  text-align:left!important;
+  padding:2px 0!important;
+}
