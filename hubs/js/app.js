@@ -204,7 +204,15 @@ function renderExplore(items){
 function fillList(id, items){
   const el=document.getElementById(id);
   if(!el) return;
-  if(id==='connections' || id==='integrated' || id==='integration'){
+ 
+  if(
+  id==='connections' ||
+  id==='integrated' ||
+  id==='integration' ||
+  id==='connectionsContent' ||
+  id==='integratedContent'
+){
+ 
     el.classList.add('exploreGrid');
     el.innerHTML=renderExplore(items||['다음 단계에서 세부 내용을 연결합니다.']);
     return;
@@ -227,7 +235,12 @@ function render(id){
   map.src=h.map||'assets/opening-map.png';
   document.getElementById('mapText').textContent=h.mapText||'지도와 설명은 다음 단계에서 보완합니다.';
   document.getElementById('verse').innerHTML=h.verse||'대표성구는 다음 단계에서 입력합니다.';
-  fillList('events',h.events); fillList('meaning',h.meaning); fillList('connections',h.connections); fillList('integrated',h.integrated); fillList('refs',h.refs);
+ fillList('events',h.events);
+fillList('meaning',h.meaning);
+fillList('connectionsContent',h.connections);
+fillList('integratedContent',h.integrated);
+fillList('refs',h.refs);
+
   document.getElementById('message').textContent=h.message||'이 허브는 다음 단계에서 제작합니다.';
   const prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn'), matrix=document.getElementById('matrixBtn');
   prev.textContent=h.prev?'이전':'Matrix'; prev.onclick=()=> h.prev ? go(h.prev) : location.href='../index.html';
@@ -249,7 +262,12 @@ function render(id){
       eraBtn.onclick=()=>{ if(h.nextEra.url && h.nextEra.url !== '#') location.href=h.nextEra.url; };
     }else eraCard.style.display='none';
   }
-  history.replaceState(null,'',`?hub=${h.id}`);
+  history.replaceState(null,'',`?hub=${h.id}${location.hash||''}`);
+
+if(location.hash){
+  const el=document.querySelector(location.hash);
+  if(el) setTimeout(()=>el.scrollIntoView({block:'start'}),80);
+}
 }
 function go(id){ render(id); window.scrollTo({top:0,behavior:'smooth'}); closeList(); }
 function openList(){
