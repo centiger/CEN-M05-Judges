@@ -85,10 +85,23 @@
 
   document.querySelectorAll('.button-set button').forEach(btn=>{
     btn.addEventListener('click', e=>{
-      e.stopPropagation(); const group=btn.closest('.button-set'); const eventName=group.dataset.event; const kind=btn.dataset.kind;
-      dialogTitle.textContent = kind === 'link' ? `${eventName} 연결탐험` : `${eventName} 통합탐험`;
-      dialogText.textContent = explore[eventName]?.[kind] || '사사시대 탐험 내용을 연결합니다.';
-      dialog.showModal();
+      e.stopPropagation();
+      const group=btn.closest('.button-set');
+      const eventName=group.dataset.event;
+      const kind=btn.dataset.kind;
+      const hubMap={
+        '사사시대 개막':'opening',
+        '드보라의 승리':'deborah',
+        '기드온의 300용사':'gideon',
+        '삼손의 최후':'samson',
+        '왕이 없던 시대':'no-king'
+      };
+      const hub=hubMap[eventName];
+      const hash = kind==='link' ? '#connections' : '#integration';
+      if(hub){
+        location.href='hubs/index.html?hub='+hub+hash;
+        return;
+      }
     });
   });
 
